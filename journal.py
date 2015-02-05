@@ -24,6 +24,10 @@ INSERT_ENTRY = """
 INSERT INTO entries (title, text, created) VALUES (%s, %s, %s)
 """
 
+DB_ENTRIES_LIST = """
+SELECT id, title, text, created FROM entries ORDER BY created DESC
+"""
+
 logging.basicConfig()
 log = logging.getLogger(__file__)
 
@@ -103,6 +107,15 @@ def write_entry(request):
     text = request.params.get('text', None)
     created = datetime.datetime.utcnow()
     request.db.cursor().execute(INSERT_ENTRY, [title, text, created])
+
+
+def read_entries(request):
+    """return a list of all entries as dicts"""
+    cursor = request.db.cursor()
+    cursor.execute(DB_ENTRIES_LIST)
+    keys = ('id', 'title', 'text', 'created')
+    entries = [dict(zip(keys, row)) for row in cursor.fetchall()]
+    return {'entries': entries}
 
 
 if __name__ == '__main__':
