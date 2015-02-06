@@ -128,7 +128,7 @@ COLORS
 .entry {
     color: #000;
     text-align: center;
-    margin-bottom: 50px
+    margin-bottom: 75px
 }
 
 
@@ -179,7 +179,7 @@ nav a.selected, nav a:hover {
 
 .post {
     margin: auto;
-    width: 45%;
+    width: 60%;
     text-align: center;
     background-color: #eee;
     padding-bottom: 15px;
@@ -193,14 +193,6 @@ nav a.selected, nav a:hover {
     margin-bottom: -10px;
 }
 
-.entry-body {
-    margin-bottom: 10px;
-}
-
-.field {
-    text-align: center;
-    margin-bottom: auto;
-}
 
 .control_row {
     text-align: center;
@@ -209,7 +201,7 @@ nav a.selected, nav a:hover {
 }
 
 .form_field {
-    margin-right: 10px
+    margin-right: 10px;
 }
 
 #gallery {
