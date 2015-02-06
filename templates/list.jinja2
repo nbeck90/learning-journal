@@ -1,14 +1,38 @@
 {% extends "base.jinja2" %}
 {% block body %}
-  <h2>Entries</h2>
+{% if request.authenticated_userid %}
+<aside>
+<form action="{{ request.route_url('add') }}" method="POST" class="add_entry">
+  <div class="field">
+    <label for="title" class="form_field">Title:</label>
+    <input type="text" size="30" name="title" id="title"/>
+  </div>
+  <br>
+  <div class="field">
+    <label for="text" class="form_field">Text:</label>
+    <textarea name="text" id="text" rows="5" cols="60"></textarea>
+  </div>
+  <div class="control_row">
+    <input type="submit" value="Share" name="Share"/>
+  </div>
+</form>
+</aside>
+{% endif %}
+  <hr>
+  <h2 id="gallery">Entries</h2>
+  <hr>
   {% for entry in entries %}
-  <article class="entry" id="entry={{entry.id}}">
-    <h3>{{ entry.title }}</h3>
-    <p class="dateline">{{ entry.created.strftime('%b. %d, %Y') }}
-    <div class="entry_body">
-      {{ entry.text|safe }}
-    </div>
-  </article>
+    <article class="entry" id="entry={{entry.id}}">
+          <a href="/" class="post">
+            <h3>{{ entry.title }}</h3>
+            <div class="post">
+              <p class="dateline">{{ entry.created.strftime('%b. %d, %Y') }}</p>
+              <div class="entry_body">
+                {{ entry.text|safe }}
+              </div>
+            </div>
+          </a>
+    </article>
   {% else %}
   <div class="entry">
     <p><em>No entries here so far</em></p>

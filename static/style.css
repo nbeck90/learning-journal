@@ -8,6 +8,7 @@ body {
 
 a {
     text-decoration: none;
+    color: #222;
 }
 
 #wrapper {
@@ -30,39 +31,51 @@ h3 {
 }
 
 
-
 /*******************
 HEADING
 *******************/
 
 
 header {
+    text-shadow: 2px 3px 2px rgba(0,0,0,.25);
     float: left;
     margin: 0 0 30px 0;
-    padding: 5px 0 0 0;
+    padding-bottom: 20px;
     width: 100%;
 }
 
 
 #logo {
-    text-align: center;
-    margin: 0;
+    text-align: left;
+    padding: 5px 0 0 0;
+    margin-left: 10px;
 }
+
+#logo h1 {
+    padding: -10px 0 5px 0 ;
+    margin-left: 20px;
+}
+
+#logo h2 {
+    padding: 10px 0 0 0;
+    margin-left: 20px;
+}
+
 
 h1 {
     font-family: 'Robot', sans-serif;
-    margin: 15px 0;
+    margin: 5px 0 0 0;
     font-size: 1.75em;
     font-weight: normal;
     line-height: 0.8em;
-    text-shadow: 0 3px 3px rgba(0,0,0,.8);
+    text-shadow: 3px 3px 3px rgba(0,0,0,.5);
 }
 
 h2 {
-    font-size: 0.75em;
+    font-size: 1.25em;
     margin: -5px 0 0;
     font-weight: normal;
-    text-shadow: 0 .5px .5px rgba(0,0,0,1);
+    text-shadow: 1 1px .5px rgba(0,0,0,1);
 
 }
 
@@ -70,40 +83,31 @@ h3 {
     text-align: center;
 }
 
-
-
 /*******************
 NAVIGATION
 *******************/
 
-
-
 #user-controls {
-    text-align: center;
-    padding: 10px 0;
-    margin: 20px 0 0;
+    text-align: right;
+    padding: auto;
+    margin: 0px 20px 0 0;
 }
 
-nav ul {
+#user-controls ul {
     list-style: none;
     margin: 0 10px;
     padding: 0;
 }
 
-nav li {
+#user-controls li {
     display: inline-block;
 }
 
-nav a {
-    font-weight: 100;
+#user-controls a {
+    font-size: 1.25em;
+    font-weight: normal;
     padding: 15px 10px;
-    text-shadow: 0 .5px .5px rgba(0,0,0,1);
 }
-
-#sub_received {
-    font-size: 2.0em;
-}
-
 
 /*******************
 FOOTER
@@ -115,7 +119,7 @@ footer {
     font-size: 0.75em;
     text-align: center;
     clear: both;
-    padding-top: 50px:
+    padding-top: 50px;
     color: #ccc;
 }
 
@@ -126,38 +130,22 @@ footer {
 }
 
 
-
-/*******************
-PAGE: HOME
-*******************/
-
-
-#gallery {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-}
-
-#gallery li {
-    float: left;
-    width: 45%;
-    margin: 2.5%;
-    background-color: #f5f5f5;
-    color: #111;
-}
-
-#gallery li a p {
-    margin: 0;
-    padding: 5%;
-    font-size: 0.75em;
-    color: #111
-}
-
-
 /*******************
 COLORS
 *******************/
 
+.entry {
+    color: #000;
+    text-align: center;
+    margin-bottom: 20px
+}
+
+
+.dateline {
+    padding: 5px;
+    font-size: 1em;
+    color: #111
+}
 
 
 /* site body */
@@ -167,9 +155,16 @@ body {
     margin: 0;
 }
 
+#content h2{
+    text-align: center;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+
 /* gray header */
 header {
-    background: #999;
+    background: #bbb;
     border-color: #666;
 }
 
@@ -193,18 +188,48 @@ nav a.selected, nav a:hover {
     color: #000;
 }
 
-/*******************
-SUBMISSION
-*******************/
-
-.submissionfield {
-    padding: 20px;
+.post {
+    margin: auto;
+    width: 45%;
     text-align: center;
-    font-size:18pt;
-    padding-bottom: 30px;
+    background-color: #bbb;
+    padding-bottom: 15px;
+    box-shadow: 6px 6px 10px rgba(0,0,0,.5)
 }
 
-.submissionfield input {
-    height: 30px;
-    width: 200px;
+.post h3 {
+    text-align: center;
+    margin-top: 30px
+}
+
+.entry-body {
+    margin-bottom: 10px;
+}
+
+.field {
+    text-align: center;
+    margin: auto;
+}
+
+.control_row {
+    text-align: center;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.form_field {
+    margin-right: 10px
+}
+
+#gallery {
+    margin: 25px 0
+}
+
+#title {
+    box-shadow: 1px 1px 10px rgba(0,0,0,.4);
+}
+
+#text {
+    box-shadow: 0px 0px 20px rgba(0,0,0,.4);
+    padding-bottom: 10px
 }
