@@ -140,6 +140,7 @@ COLORS
     background: linear-gradient(transparent 10%, lightblue 50%);
     height: 830px;
     background-size: cover;
+    background-repeat: no-repeat;
     margin-bottom: 10px;
     padding-bottom: 10px;
 }
