@@ -4,12 +4,13 @@
 <aside>
 <form action="{{ request.route_url('add') }}" method="POST" class="add_entry">
   <div class="field">
-    <label for="title">Title</label>
+    <label for="title" class="form_field">Title:</label>
     <input type="text" size="30" name="title" id="title"/>
   </div>
+  <br>
   <div class="field">
-    <label for="text">Text</label>
-    <textarea name="text" id="text" rows="5" cols="80"></textarea>
+    <label for="text" class="form_field">Text:</label>
+    <textarea name="text" id="text" rows="5" cols="60"></textarea>
   </div>
   <div class="control_row">
     <input type="submit" value="Share" name="Share"/>
@@ -17,7 +18,9 @@
 </form>
 </aside>
 {% endif %}
+  <hr>
   <h2 id="gallery">Entries</h2>
+  <hr>
   {% for entry in entries %}
     <article class="entry" id="entry={{entry.id}}">
           <a href="/" class="post">

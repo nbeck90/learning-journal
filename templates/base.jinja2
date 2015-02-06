@@ -13,15 +13,15 @@
     <header>
       <a href="/" id="logo">
         <h1>Nick Becker</h1>
-        <h2>My Python Journal</h2>
+        <h2>Python Learning Journal</h2>
       </a>
       <aside id="user-controls">
       <ul>
       <li><a href="/" class="selected">Home</a></li>
       {% if not request.authenticated_userid %}
-        <li><a href="{{ request.route_url('login') }}">Log in</a></li>
+      <li><a href="{{ request.route_url('login') }}">Log in</a></li>
       {% else %}
-        <li><a href="{{ request.route_url('logout') }}">Log out</a></li>
+      <li><a href="{{ request.route_url('logout') }}">Log out</a></li>
       {% endif %}
       </ul>
     </aside>
