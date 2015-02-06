@@ -119,8 +119,9 @@ footer {
     font-size: 0.75em;
     text-align: center;
     clear: both;
-    padding-top: 50px;
-    color: #ccc;
+    padding-top: 180px;
+    color: #555;
+    margin: 0px;
 }
 
 .social-icon {
@@ -134,10 +135,20 @@ footer {
 COLORS
 *******************/
 
+
+#main_body {
+    background: linear-gradient(transparent 10%, lightblue 50%);
+    height: 830px;
+    background-size: cover;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+
 .entry {
     color: #000;
     text-align: center;
-    margin-bottom: 20px
+    margin-bottom: 50px
 }
 
 
@@ -150,8 +161,6 @@ COLORS
 
 /* site body */
 body {
-    background-color: #fff;
-    color: #999;
     margin: 0;
 }
 
@@ -164,7 +173,7 @@ body {
 
 /* gray header */
 header {
-    background: #bbb;
+    background: linear-gradient(to bottom, #aaa, transparent);
     border-color: #666;
 }
 
@@ -192,14 +201,16 @@ nav a.selected, nav a:hover {
     margin: auto;
     width: 45%;
     text-align: center;
-    background-color: #bbb;
+    background-color: #eee;
     padding-bottom: 15px;
-    box-shadow: 6px 6px 10px rgba(0,0,0,.5)
+    box-shadow: 6px 6px 10px rgba(0,0,0,.5);
+    border-radius: 10px;
 }
 
 .post h3 {
     text-align: center;
-    margin-top: 30px
+    margin-top: 30px;
+    margin-bottom: -10px;
 }
 
 .entry-body {
