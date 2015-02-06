@@ -90,7 +90,7 @@ def main():
         'DATABASE_URL', 'dbname=learning_journal user=nbeck'
     )
     # secret value for session signing:
-    settings['auth.username'] = os.environ.get('AUTH_USERNAME', 'admin')
+    settings['auth.username'] = os.environ.get('ADMIN_USERNAME', 'admin')
     manager = BCRYPTPasswordManager()
     settings['auth.password'] = os.environ.get(
         'AUTH_PASSWORD', manager.encode('secret')
