@@ -136,16 +136,6 @@ COLORS
 *******************/
 
 
-#main_body {
-    background: linear-gradient(transparent 10%, lightblue 50%);
-    height: 830px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    margin-bottom: 10px;
-    padding-bottom: 10px;
-}
-
-
 .entry {
     color: #000;
     text-align: center;
@@ -245,3 +235,13 @@ nav a.selected, nav a:hover {
     box-shadow: 0px 0px 20px rgba(0,0,0,.4);
     padding-bottom: 10px
 }
+
+/* Background won't repeat */
+html {
+  background: linear-gradient(transparent, lightblue 50%);
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
