@@ -224,3 +224,7 @@ nav a.selected, nav a:hover {
 #login {
     margin-bottom: 330px;
 }
+
+.entry_body {
+    margin: 0px 20px
+}
