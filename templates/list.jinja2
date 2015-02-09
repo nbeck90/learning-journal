@@ -23,15 +23,13 @@
   <hr>
   {% for entry in entries %}
     <article class="entry" id="entry={{entry.id}}">
-          <a href="/" class="post">
             <h3>{{ entry.title }}</h3>
             <div class="post">
               <p class="dateline">{{ entry.created.strftime('%b. %d, %Y') }}</p>
-              <div class="entry_body">
+              <a href="/" class="entry_body">
                 {{ entry.text|safe }}
-              </div>
+              </a>
             </div>
-          </a>
     </article>
   {% else %}
   <div class="entry">
