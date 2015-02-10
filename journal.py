@@ -36,7 +36,7 @@ SELECT id, title, text, created FROM entries ORDER BY created DESC
 """
 
 READ_ENTRY = """
-SELECT FROM entries (id) VALUES (%s)
+SELECT id, title, text, created FROM entries WHERE id = %s
 """
 
 logging.basicConfig()
@@ -148,8 +148,8 @@ def read_entries(request):
 def detail_entry(request):
     """return a single entry"""
     cursor = request.db.cursor()
-    post_id = request.params.get("id", None)
-    cursor.execute(READ_ENTRY, [post_id])
+    id = request.matchdict.get("id", None)
+    cursor.execute(READ_ENTRY, [id])
     keys = ('id', 'title', 'text', 'created')
     entry = [dict(zip(keys, row)) for row in cursor.fetchall()]
     return {'entry': entry}
