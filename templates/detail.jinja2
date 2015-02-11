@@ -7,12 +7,12 @@
     {% for entry in entry %}
         <article class="entry" id="title={{ entry.id }}">
          <h3>{{ entry.title }}</h3>
-         <div class="post">
+          <div class="post">
              <p class="dateline">{{ entry.created.strftime('%b. %d, %Y') }}</p>
-             <div>
-               {{ entry.text|safe }}
-             </div>
-        </div>
+              <div class="entry_body">
+               {{ entry.text|markdown|safe }}
+              </div>
+          </div>
         </article>
     {% endfor %}
 {% endblock %}
