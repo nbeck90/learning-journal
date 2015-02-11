@@ -9,7 +9,7 @@
          <h3>{{ entry.title }}</h3>
           <div class="post">
              <p class="dateline">{{ entry.created.strftime('%b. %d, %Y') }}</p>
-              <div class="entry_body">
+              <div class="entry_body" id ="detail_post">
                {{ entry.text|markdown|safe }}
               </div>
           </div>

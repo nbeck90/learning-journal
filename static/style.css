@@ -241,3 +241,8 @@ nav a.selected, nav a:hover {
     margin: 0 5px;
     opacity: 0.5;
 }
+
+#detail_post h1{
+    color: #000;
+    margin-bottom: -10px;
+}
