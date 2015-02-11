@@ -1,15 +1,20 @@
 {% extends "base.jinja2" %}
 
 {% block body %}
-
-<article id="id={{ id.id }}">
- <h1 class="headingLink">{{ id.title }}</h1>
- <p><small>{{ entry.created.strftime('%b. %d, %Y') }}</small>
- <div>
-   {{ entry.text|safe }}
-   </br></br>
-   <hr class="titleDivider">
- </div>
-</article>
-
+  <hr>
+  <h2 id="gallery">Detailed Post</h2>
+  <hr>
+    {% for entry in entry %}
+        <article class="entry" id="title={{ entry.id }}">
+        <div class="post">
+         <h1 class="headingLink">{{ entry.title }}</h1>
+         <p><small>{{ entry.created.strftime('%b. %d, %Y') }}</small></p>
+         <div>
+           {{ entry.text|safe }}
+           </br></br>
+           <hr class="titleDivider">
+         </div>
+        </div>
+        </article>
+    {% endfor %}
 {% endblock %}

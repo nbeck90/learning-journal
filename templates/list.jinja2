@@ -26,7 +26,7 @@
           <class="post">
             <h3>{{ entry.title }}</h3>
             <div class="post">
-            <a href ="/detail/{id}">
+            <a href ="/detail/{{entry.id}}">
               <p class="dateline">{{ entry.created.strftime('%b. %d, %Y') }}</p>
               <div class="entry_body">
                 {{ entry.text|safe }}

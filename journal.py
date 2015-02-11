@@ -148,8 +148,8 @@ def read_entries(request):
 def detail_entry(request):
     """return a single entry"""
     cursor = request.db.cursor()
-    id = request.matchdict.get("id", None)
-    cursor.execute(READ_ENTRY, [id])
+    post_id = request.matchdict.get("id", None)
+    cursor.execute(READ_ENTRY, [post_id])
     keys = ('id', 'title', 'text', 'created')
     entry = [dict(zip(keys, row)) for row in cursor.fetchall()]
     return {'entry': entry}
