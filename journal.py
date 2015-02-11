@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 
 from contextlib import closing
+import jinja2
+import markdown
 import psycopg2
 import os
 import logging
@@ -113,6 +115,7 @@ def main():
         ),
         authorization_policy=ACLAuthorizationPolicy(),
     )
+    jinja2.filters.FILTERS['markdown'] = markd
     config.include('pyramid_jinja2')
     config.add_static_view('static', os.path.join(here, 'static'))
     config.add_route('home', '/')
@@ -124,6 +127,10 @@ def main():
     config.scan()
     app = config.make_wsgi_app()
     return app
+
+
+def markd(input):
+    return markdown.markdown(input)
 
 
 def write_entry(request):

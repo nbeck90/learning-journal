@@ -2,7 +2,7 @@
 
 {% block body %}
   <hr>
-  <h2 id="gallery">Detailed View</h2>
+  <h2 id="gallery">Detailed Post View</h2>
   <hr>
     {% for entry in entry %}
         <article class="entry" id="title={{ entry.id }}">
@@ -10,7 +10,7 @@
             <div class="post">
              <p class="dateline">{{ entry.created.strftime('%b. %d, %Y') }}</p>
              <div class="entry_body">
-               {{ entry.text|safe }}
+               {{ entry.text|markdown|safe }}
              </div>
             </div>
         </article>
