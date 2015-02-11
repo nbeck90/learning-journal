@@ -2,19 +2,18 @@
 
 {% block body %}
   <hr>
-  <h2 id="gallery">Detailed Post</h2>
+  <h2 id="gallery">Detailed Post View</h2>
   <hr>
     {% for entry in entry %}
         <article class="entry" id="title={{ entry.id }}">
-        <div class="post">
-         <h1 class="headingLink">{{ entry.title }}</h1>
-         <p><small>{{ entry.created.strftime('%b. %d, %Y') }}</small></p>
-         <div>
-           {{ entry.text|safe }}
-           </br></br>
-           <hr class="titleDivider">
-         </div>
+         <h3>{{ entry.title }}</h3>
+         <div class="post">
+             <p class="dateline">{{ entry.created.strftime('%b. %d, %Y') }}</p>
+             <div>
+               {{ entry.text|safe }}
+             </div>
         </div>
         </article>
     {% endfor %}
 {% endblock %}
+
