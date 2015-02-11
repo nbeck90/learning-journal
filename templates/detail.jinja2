@@ -6,7 +6,7 @@
   <hr>
     {% for entry in entry %}
         <article class="entry" id="title={{ entry.id }}">
-         <h3 class="headingLink">{{ entry.title }}</h3>
+         <h3>{{ entry.title }}</h3>
             <div class="post">
              <p class="dateline">{{ entry.created.strftime('%b. %d, %Y') }}</p>
              <div class="entry_body">
