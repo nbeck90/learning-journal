@@ -1,0 +1,18 @@
+{% extends "base.jinja2" %}
+
+{% block body %}
+  <hr>
+  <h2 id="gallery">Detailed View</h2>
+  <hr>
+    {% for entry in entry %}
+        <article class="entry" id="title={{ entry.id }}">
+         <h3>{{ entry.title }}</h3>
+            <div class="post">
+             <p class="dateline">{{ entry.created.strftime('%b. %d, %Y') }}</p>
+             <div class="entry_body">
+               {{ entry.text|safe }}
+             </div>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock %}

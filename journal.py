@@ -35,6 +35,10 @@ DB_ENTRIES_LIST = """
 SELECT id, title, text, created FROM entries ORDER BY created DESC
 """
 
+READ_ENTRY = """
+SELECT id, title, text, created FROM entries WHERE id = %s
+"""
+
 logging.basicConfig()
 log = logging.getLogger(__file__)
 
@@ -115,6 +119,8 @@ def main():
     config.add_route('add', '/add')
     config.add_route('login', '/login')
     config.add_route('logout', '/logout')
+    config.add_route('detail', '/detail/{id}')
+    config.add_route('edit', '/edit/{id}')
     config.scan()
     app = config.make_wsgi_app()
     return app
@@ -136,6 +142,17 @@ def read_entries(request):
     keys = ('id', 'title', 'text', 'created')
     entries = [dict(zip(keys, row)) for row in cursor.fetchall()]
     return {'entries': entries}
+
+
+@view_config(route_name='detail', renderer='templates/detail.jinja2')
+def detail_entry(request):
+    """return a single entry"""
+    cursor = request.db.cursor()
+    post_id = request.matchdict.get("id", None)
+    cursor.execute(READ_ENTRY, [post_id])
+    keys = ('id', 'title', 'text', 'created')
+    entry = [dict(zip(keys, row)) for row in cursor.fetchall()]
+    return {'entry': entry}
 
 
 @view_config(route_name='add', request_method='POST')
