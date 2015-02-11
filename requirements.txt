@@ -1,6 +1,7 @@
 beautifulsoup4==4.3.2
 cryptacular==1.4.1
 Jinja2==2.7.3
+Markdown==2.5.2
 MarkupSafe==0.23
 PasteDeploy==1.5.2
 pbkdf2==1.3
