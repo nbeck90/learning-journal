@@ -13,11 +13,12 @@ a {
 
 /* Background won't repeat */
 html {
-  background: linear-gradient(transparent, MediumPurple 50%);
+  background: linear-gradient(transparent 31%, MediumPurple);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
-  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 
@@ -153,7 +154,7 @@ body {
 
 /* gray header */
 header {
-    background: linear-gradient(to bottom, #aaa, transparent);
+    background: linear-gradient(to bottom, #aaa -10%, transparent);
     border-color: #666;
 }
 
