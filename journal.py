@@ -130,7 +130,7 @@ def main():
 
 
 def markd(input):
-    return markdown.markdown(input)
+    return markdown.markdown(input, extension=["CodeHilite"])
 
 
 def write_entry(request):
@@ -148,6 +148,8 @@ def read_entries(request):
     cursor.execute(DB_ENTRIES_LIST)
     keys = ('id', 'title', 'text', 'created')
     entries = [dict(zip(keys, row)) for row in cursor.fetchall()]
+    for entry in entries:
+        entry['text'] = markdown.markdown(entry['text'], extensions=['codehilite', 'fenced_code'])
     return {'entries': entries}
 
 
@@ -158,8 +160,10 @@ def detail_entry(request):
     post_id = request.matchdict.get("id", None)
     cursor.execute(READ_ENTRY, [post_id])
     keys = ('id', 'title', 'text', 'created')
-    entry = [dict(zip(keys, row)) for row in cursor.fetchall()]
-    return {'entry': entry}
+    entries = [dict(zip(keys, row)) for row in cursor.fetchall()]
+    for entry in entries:
+        entry['text'] = markdown.markdown(entry['text'], extensions=['codehilite', 'fenced_code'])
+    return {'entries': entries}
 
 
 @view_config(route_name='add', request_method='POST')

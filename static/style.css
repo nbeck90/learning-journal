@@ -246,3 +246,17 @@ nav a.selected, nav a:hover {
     color: #000;
     margin-bottom: -10px;
 }
+
+pre {
+    background-color: black;
+    color: white;
+    text-align: center;
+    font-size: 1.25em;
+    padding: 20px;
+    max-width: 300px;
+    margin: auto;
+}
+
+code {
+    padding: 100px;
+}
