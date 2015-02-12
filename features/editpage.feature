@@ -1,8 +1,8 @@
-Feature: Post Editing
-    Implement an edit functionality in our website that allows
-    for changing the text/itle of a post while retaining the id.
+Feature: Post Edit Page
+    Implement an edit page that can be accessed from the detail
+    page if logged in.
 
-    Scenario: Edit a post
+    Scenario: Move to the edit page
         Given a posts detail page
         When I click the edit button
         Then I move to the edit page
