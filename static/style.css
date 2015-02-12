@@ -13,7 +13,7 @@ a {
 
 /* Background won't repeat */
 html {
-  background: linear-gradient(transparent 31%, MediumPurple);
+  background: linear-gradient(transparent 29%, MediumPurple);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
