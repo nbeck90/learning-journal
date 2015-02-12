@@ -1,5 +1,4 @@
 {% extends "base.jinja2" %}
-
 {% block body %}
   <hr>
   <h2 id="gallery">Detailed Post View</h2>
@@ -13,6 +12,11 @@
                {{ entry.text|markdown|safe }}
               </div>
           </div>
+          <a href ="/edit/{{entry.id}}">
+          {% if request.authenticated_userid %}
+          <button class="edit_button">Edit</button>
+          {% endif %}
+          </a>
         </article>
     {% endfor %}
 {% endblock %}
