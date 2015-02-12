@@ -1,15 +1,21 @@
 {% extends "base.jinja2" %}
 {% block body %}
+  <hr>
+  <h2 id="gallery">Entries</h2>
+  <hr>
+  <br>
 {% if request.authenticated_userid %}
+<div id="new_post">
+<h3 id="post">Write a new entry!</h3>
 <aside>
 <form action="{{ request.route_url('add') }}" method="POST" class="add_entry">
   <div class="field">
-    <label for="title" class="form_field">Title:</label>
-    <input type="text" size="30" name="title" id="title"/>
+    <label for="title" class="form_field">Title:</label><br>
+    <textarea name="title" id="text" rows="1" cols="30"></textarea>
   </div>
   <br>
   <div class="field">
-    <label for="text" class="form_field">Text:</label>
+    <label for="text" class="form_field">Text:</label><br>
     <textarea name="text" id="text" rows="5" cols="60"></textarea>
   </div>
   <div class="control_row">
@@ -17,10 +23,9 @@
   </div>
 </form>
 </aside>
+</div>
 {% endif %}
-  <hr>
-  <h2 id="gallery">Entries</h2>
-  <hr>
+{% if request.authenticated_userid %}<div id="all_posts">{% endif %}
   {% for entry in entries %}
     <article class="entry" id="entry={{entry.id}}">
           <a href ="/detail/{{entry.id}}">
@@ -41,4 +46,5 @@
     <p><em>No entries here so far</em></p>
   </div>
   {% endfor %}
+  </div>
 {% endblock %}

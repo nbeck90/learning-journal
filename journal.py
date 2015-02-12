@@ -41,6 +41,10 @@ READ_ENTRY = """
 SELECT id, title, text, created FROM entries WHERE id = %s
 """
 
+UPDATE_ENTRY = """
+UPDATE entries SET (title, text, created) = (%s, %s, %s) WHERE id=%s
+"""
+
 logging.basicConfig()
 log = logging.getLogger(__file__)
 
@@ -163,6 +167,33 @@ def detail_entry(request):
     entries = [dict(zip(keys, row)) for row in cursor.fetchall()]
     for entry in entries:
         entry['text'] = markdown.markdown(entry['text'], extensions=['codehilite', 'fenced_code'])
+    return {'entries': entries}
+
+
+def update_entry(request, id):
+    title = request.params.get('title')
+    text = request.params.get('text')
+    created = datetime.datetime.utcnow()
+    request.db.cursor().execute(UPDATE_ENTRY, [title, text, created, id])
+
+
+@view_config(route_name='edit', request_method='POST')
+def edit_entry(request):
+    try:
+        id = request.matchdict['id']
+        update_entry(request, id)
+    except psycopg2.Error:
+        return HTTPInternalServerError
+    return HTTPFound(request.route_url('home'))
+
+
+@view_config(route_name='edit', renderer="templates/edit.jinja2")
+def edit(request):
+    id = request.matchdict['id']
+    cursor = request.db.cursor()
+    cursor.execute(READ_ENTRY, (id,))
+    keys = ('id', 'title', 'text', 'created')
+    entries = [dict(zip(keys, row)) for row in cursor.fetchall()]
     return {'entries': entries}
 
 

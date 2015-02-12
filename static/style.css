@@ -206,7 +206,35 @@ nav a.selected, nav a:hover {
 }
 
 .form_field {
-    margin-right: 10px;
+    margin: auto;
+    text-align: center;
+}
+
+.edit_field {
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+.edit_button {
+    background-color: #ddd;
+    margin: 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,.5);
+}
+
+.edit_title {
+    margin-bottom: 200px;
+}
+
+input {
+    background-color: #ddd;
+    margin: 20px;
+    font-size: 1em;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,.5);
 }
 
 #gallery {
@@ -248,6 +276,16 @@ nav a.selected, nav a:hover {
     margin-bottom: -10px;
 }
 
+#new_post {
+    float: left;
+    width: 50%;
+}
+
+#all_posts {
+    float: right;
+    width: 50%
+}
+
 pre {
     background-color: black;
     color: white;
@@ -261,3 +299,5 @@ pre {
 code {
     padding: 100px;
 }
+
+
