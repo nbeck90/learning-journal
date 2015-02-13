@@ -13,29 +13,29 @@ from lettuce import after
 TEST_DSN = 'dbname=test_learning_journal user=nbeck'
 
 
-def init_db(settings):
-    with closing(connect_db(settings)) as db:
+def init_db(setup):
+    with closing(connect_db(setup)) as db:
         db.cursor().execute(DB_SCHEMA)
         db.commit()
 
 
-def clear_db(settings):
-    with closing(connect_db(settings)) as db:
+def empty_db(setup):
+    with closing(connect_db(setup)) as db:
         db.cursor().execute("DROP TABLE entries")
         db.commit()
 
 
-def clear_entries(settings):
-    with closing(connect_db(settings)) as db:
+def clear_entries(setup):
+    with closing(connect_db(setup)) as db:
         db.cursor().execute("DELETE FROM entries")
         db.commit()
 
 
 @before.all
 def db():
-    settings = {'db': TEST_DSN}
-    init_db(settings)
-    world.settings = settings
+    setup = {'db': TEST_DSN}
+    init_db(setup)
+    world.setup = setup
 
 
 @before.all
@@ -67,23 +67,35 @@ def login():
 
 
 @before.all
-def entry():
-    settings = world.settings
+def entry1():
+    setup = world.setup
     now = datetime.datetime.utcnow()
     expected = ('New Title', 'New Test', now)
-    with closing(connect_db(settings)) as db:
+    with closing(connect_db(setup)) as db:
         run_query(db, INSERT_ENTRY, expected, False)
         db.commit()
     world.expected = expected
 
 
 @before.all
-def entry_2():
-    """Add an entry to the database"""
-    settings = world.settings
+def entry2():
+    """Add an entry to the database with a header"""
+    setup = world.setup
     now = datetime.datetime.utcnow()
     expected = ('Markdown Test', '# Header1', now)
-    with closing(connect_db(settings)) as db:
+    with closing(connect_db(setup)) as db:
+        run_query(db, INSERT_ENTRY, expected, False)
+        db.commit()
+    world.expected = expected
+
+
+@before.all
+def entry3():
+    """Add an entry to the database with a header"""
+    setup = world.setup
+    now = datetime.datetime.utcnow()
+    expected = ('Markdown Test', "```Inline code```", now)
+    with closing(connect_db(setup)) as db:
         run_query(db, INSERT_ENTRY, expected, False)
         db.commit()
     world.expected = expected
@@ -91,7 +103,7 @@ def entry_2():
 
 @after.all
 def cleanup(step):
-    clear_db(world.settings)
+    empty_db(world.setup)
 
 
 @step('I am at the homepage')
@@ -126,3 +138,44 @@ def edit_click(step):
 def edit_page(step):
     response = world.app.get('/edit/1')
     assert 'id="share_button"' in response.body
+
+
+@step('a post that I have edited')
+def edited_post(step):
+    response = world.app.get('/edit/1')
+    assert 'id="share_button"' in response.body
+
+
+@step('I click the share button')
+def button_exists(step):
+    response = world.app.get('/edit/1')
+    assert 'id="share_button"' in response.body
+
+
+@step('I move to that posts detail page')
+def click_share(step):
+    response = world.app.get('/edit/1')
+    edit_form = response.form
+    sub = edit_form.submit
+    select = sub("share_button", index=5)
+    assert select.status_code == 302
+    redirect = select.follow()
+    assert 'class="edit_button"' in redirect.body
+
+
+@step("a posts detail page with markdown written in it")
+def at_detail(step):
+    response = world.app.get('/detail/1')
+    assert 'class="edit_button"' in response.body
+
+
+@step('I see properly formatted/colored text')
+def is_colored(step):
+    response = world.app.get('/detail/3')
+    assert '<code>Inline code</code>' in response.body
+
+
+@step('I see properly formatted/rendered text')
+def is_markd(step):
+    response = world.app.get('/detail/2')
+    assert '<h1>Header1</h1>' in response.body

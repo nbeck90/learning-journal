@@ -4,5 +4,5 @@ Feature: Post Editing
 
     Scenario: Edit a post
         Given a post that I have edited
-        When I click the submit button
+        When I click the share button
         Then I move to that posts detail page
