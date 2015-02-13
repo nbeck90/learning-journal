@@ -193,7 +193,7 @@ def edit(request):
             update_entry(request, id)
         except psycopg2.Error:
             return HTTPInternalServerError
-        return HTTPFound(request.route_url('home'))
+        return HTTPFound(request.route_url('detail', id=id))
 
     return {'entries': entries}
 

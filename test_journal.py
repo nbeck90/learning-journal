@@ -144,7 +144,7 @@ def test_read_entries_empty(req_context):
 def test_read_entries(req_context):
     # prepare data for testing
     now = datetime.datetime.utcnow()
-    expected = ('Test Title', 'Test Text', now)
+    expected = ('Test Title', '<p>Test Text</p>', now)
     run_query(req_context.db, INSERT_ENTRY, expected, False)
     # call the function under test
     from journal import read_entries
