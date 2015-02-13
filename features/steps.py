@@ -117,17 +117,17 @@ def get_entry(step, title):
     assert title in response.body
 
 
+@step('I move to the edit page')
+def edit_page(step):
+    response = world.app.get('/edit/1')
+    assert 'id="share_button"' in response.body
+
+
 @step('I click the edit button')
-def edit_button(self):
+def edit_button(step):
     entry_data = {
         'title': 'Edited Title Text',
         'text': 'Edited Post',
     }
     world.app.post('/edit/1', params=entry_data, status='3*')
-
-
-@step('I move to the edit page')
-def edit_page(self):
-    response = world.app.get('/edit/1')
-    assert 'id="edit_button"' in response.body
 
