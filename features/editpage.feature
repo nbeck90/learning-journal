@@ -3,6 +3,6 @@ Feature: Post Edit Page
     page if logged in.
 
     Scenario: Move to the edit page
-        Given a posts detail page
+        Given a posts detail page and I am logged in
         When I click the edit button
         Then I move to the edit page
