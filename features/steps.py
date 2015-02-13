@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 from contextlib import closing
-from pyramid import testing
 import datetime
 import os
 from journal import INSERT_ENTRY
 from journal import connect_db
 from journal import DB_SCHEMA
-from cryptacular.bcrypt import BCRYPTPasswordManager
 from lettuce import world
 from lettuce import step
 from lettuce import before
@@ -117,17 +115,14 @@ def get_entry(step, title):
     assert title in response.body
 
 
+@step('I click the edit button')
+def edit_click(step):
+    world.app.get('/detail/1')
+    action = world.response.click("Edit")
+    assert 'id="share_button"' in action.body
+
+
 @step('I move to the edit page')
 def edit_page(step):
     response = world.app.get('/edit/1')
     assert 'id="share_button"' in response.body
-
-
-@step('I click the edit button')
-def edit_button(step):
-    entry_data = {
-        'title': 'Edited Title Text',
-        'text': 'Edited Post',
-    }
-    world.app.post('/edit/1', params=entry_data, status='3*')
-
