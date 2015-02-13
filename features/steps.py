@@ -60,6 +60,15 @@ def run_query(db, query, params=(), get_results=True):
 
 
 @before.all
+def login():
+    entry_data = {
+        'username': 'admin',
+        'password': 'secret',
+    }
+    world.app.post('/login', params=entry_data, status='3*')
+
+
+@before.all
 def entry():
     settings = world.settings
     now = datetime.datetime.utcnow()
@@ -72,7 +81,7 @@ def entry():
 
 @before.all
 def entry_2():
-    """provide a single entry in the database"""
+    """Add an entry to the database"""
     settings = world.settings
     now = datetime.datetime.utcnow()
     expected = ('Markdown Test', '# Header1', now)
@@ -106,3 +115,19 @@ def detail_page(step):
 def get_entry(step, title):
     response = world.app.get('/detail/1')
     assert title in response.body
+
+
+@step('I click the edit button')
+def edit_button(self):
+    entry_data = {
+        'title': 'Edited Title Text',
+        'text': 'Edited Post',
+    }
+    world.app.post('/edit/1', params=entry_data, status='3*')
+
+
+@step('I move to the edit page')
+def edit_page(self):
+    response = world.app.get('/edit/1')
+    assert 'id="edit_button"' in response.body
+
