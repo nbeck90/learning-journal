@@ -177,23 +177,24 @@ def update_entry(request, id):
     request.db.cursor().execute(UPDATE_ENTRY, [title, text, created, id])
 
 
-@view_config(route_name='edit', request_method='POST')
-def edit_entry(request):
-    try:
-        id = request.matchdict['id']
-        update_entry(request, id)
-    except psycopg2.Error:
-        return HTTPInternalServerError
-    return HTTPFound(request.route_url('home'))
-
-
 @view_config(route_name='edit', renderer="templates/edit.jinja2")
 def edit(request):
+
+    # if.request.authenticateduserid ELSE Forbidden
+
     id = request.matchdict['id']
     cursor = request.db.cursor()
     cursor.execute(READ_ENTRY, (id,))
     keys = ('id', 'title', 'text', 'created')
     entries = [dict(zip(keys, row)) for row in cursor.fetchall()]
+
+    if request.method == "POST":
+        try:
+            update_entry(request, id)
+        except psycopg2.Error:
+            return HTTPInternalServerError
+        return HTTPFound(request.route_url('home'))
+
     return {'entries': entries}
 
 
