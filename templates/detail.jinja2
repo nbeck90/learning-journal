@@ -3,21 +3,42 @@
   <hr>
   <h2 id="gallery">Detailed Post View</h2>
   <hr>
-    {% for entry in entries %}
-        <article class="entry" id="title={{ entry.id }}">
-         <h3>{{ entry.title }}</h3>
-          <div class="post">
-             <p class="dateline">{{ entry.created.strftime('%b. %d, %Y') }}</p>
-              <div class="entry_body" id ="detail_post">
-               {{ entry.text|markdown|safe }}
-              </div>
-          </div>
-          <a href ="/edit/{{entry.id}}">
-          {% if request.authenticated_userid %}
-          <button class="edit_button">Edit</button>
-          {% endif %}
-          </a>
-        </article>
-    {% endfor %}
+  <div id="detail_post">
+  {% for entry in entries %}
+      <article class="entry" id="title={{ entry.id }}">
+       <h3>{{ entry.title }}</h3>
+        <div class="post">
+           <p class="dateline">{{ entry.created.strftime('%b. %d, %Y') }}</p>
+            <div class="entry_body" id ="test">
+             {{ entry.text|markdown|safe }}
+            </div>
+        </div>
+      </article>
+  {% endfor %}
+  </div>
+  {% if request.authenticated_userid %}
+  <div style="text-align:center;">
+  <button class="edit_button">Edit</button>
+  </div>
+  <div class="edit_post" id="hidden_edit">
+    <aside>
+      {% for entry in entries %}
+      <form action="{{request.route_url('detail', id=entry.id) }}" method="POST" class="add_entry">
+        <div class="edit_field">
+          <label for="title" class="edit_title">Title</label><br>
+          <textarea name="title" id="title" rows="1" cols="30">{{ entry.title }}</textarea>
+        </div>
+        <div class="edit_field">
+          <label for="text" class="edit_title">Text</label><br>
+          <textarea name="text" id="text" rows="5" cols="80">{{ entry.text }}</textarea>
+        </div>
+        <div class="control_row">
+          <input type="submit" value="Share" class="share_button">
+        </div>
+      </form>
+      {% endfor %}
+    </aside>
+  </div>
+  {% endif %}
 {% endblock %}
 

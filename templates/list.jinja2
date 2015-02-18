@@ -8,10 +8,10 @@
 <div id="new_post">
 <h3 id="post">Write a new entry!</h3>
 <aside>
-<form action="{{ request.route_url('add') }}" method="POST" class="add_entry">
+<form action="" method="POST" class="add_entry" id="add">
   <div class="field">
     <label for="title" class="form_field">Title:</label><br>
-    <textarea name="title" id="text" rows="1" cols="30"></textarea>
+    <textarea name="title" id="title" rows="1" cols="30"></textarea>
   </div>
   <br>
   <div class="field">
@@ -25,9 +25,9 @@
 </aside>
 </div>
 {% endif %}
-{% if request.authenticated_userid %}<div id="all_posts">{% endif %}
+<div id="all_posts">
   {% for entry in entries %}
-    <article class="entry" id="entry={{entry.id}}">
+    <article class="entry" id="entry{{entry.id}}">
           <a href ="/detail/{{entry.id}}">
             <h3>{{ entry.title }}</h3>
           </a>
