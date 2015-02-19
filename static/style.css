@@ -312,3 +312,9 @@ code {
 .edit_post {
     visibility: hidden;
 }
+
+.twitter {
+    padding-left: 40px;
+    margin-top: -50px;
+    margin-bottom: 10px;
+}
