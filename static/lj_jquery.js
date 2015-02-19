@@ -64,6 +64,7 @@ function make_edit_success(entry){
   $(".edit_entry").remove()
   $('#edited').prepend(html);
   $(".edit_button").show();
+  twttr.widgets.load()
 }
 
 function add_post() {
