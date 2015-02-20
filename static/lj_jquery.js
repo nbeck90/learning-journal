@@ -64,7 +64,7 @@ function make_edit_success(entry){
   $(".edit_entry").remove()
   $('#edited').prepend(html);
   $(".edit_button").show();
-  twttr.widgets.load()
+  twttr.widgets.load();
 }
 
 function add_post() {
@@ -89,11 +89,16 @@ function add_success(entry){
                         '<div class="entry_body" id ="detail_post">'+
                         '{{{text}}}'+
                         '</div></a>'+
-                        '</article>';
+                        '</article>'+
+                        '<div style="text-align:center" class="twitter">'+
+                        '<a href="https://twitter.com/share" class="twitter-share-button" data-text="New Blog Post: {{title}}" data-via="BeckerCommaNick" data-size="large" data-dnt="true">Tweet</a>'+
+                        "<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>"+
+                        '</div>';
 
 
      var html = Mustache.to_html(template, entry);
      $('#all_posts').prepend(html);
+     twttr.widgets.load();
 }
 
 
