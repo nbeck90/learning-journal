@@ -22,10 +22,12 @@
   </div>
   <div id="edited">
   </div>
+  {% if request.authenticated_userid %}
   <div style="text-align:center;">
   <a href="#" id="new_edit_button">
   <button class="edit_button">Edit</button>
   </a>
   </div>
+  {% endif %}
 {% endblock %}
 
