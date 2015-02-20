@@ -25,7 +25,9 @@
 </aside>
 </div>
 {% endif %}
+{% if request.authenticated_userid %}
 <div id="all_posts">
+{% endif %}
   {% for entry in entries %}
     <article class="entry" id="entry{{entry.id}}">
           <a href ="/detail/{{entry.id}}">
