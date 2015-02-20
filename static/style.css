@@ -217,14 +217,6 @@ nav a.selected, nav a:hover {
     margin-bottom: 20px;
 }
 
-.edit_button {
-    background-color: #ddd;
-    margin: 20px;
-    font-size: 1em;
-    border-radius: 5px;
-    box-shadow: 3px 3px 10px rgba(0,0,0,.5);
-}
-
 .edit_title {
     margin-bottom: 200px;
 }
@@ -301,3 +293,28 @@ code {
 }
 
 
+.edit_button {
+    background-color: #ddd;
+    margin: auto;
+    font-size: 1em;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,.5);
+}
+
+.share_button {
+    background-color: #ddd;
+    margin: auto;
+    font-size: 1em;
+    border-radius: 5px;
+    box-shadow: 3px 3px 10px rgba(0,0,0,.5);
+}
+
+.edit_post {
+    visibility: hidden;
+}
+
+.twitter {
+    padding-left: 40px;
+    margin-top: -50px;
+    margin-bottom: 10px;
+}

@@ -7,14 +7,14 @@
     {% if request.authenticated_userid %}
       <aside>
       {% for entry in entries %}
-      <form action="{{request.route_url('edit', id=entry.id) }}" method="POST" class="add_entry">
+      <form action="{{request.route_url('edit', id=entry.id) }}" method="POST" class="edit_entry">
         <div class="edit_field">
           <label for="title" class="edit_title">Title</label><br>
-          <textarea name="title" id="title" rows="1" cols="30">{{ entry.title }}</textarea>
+          <textarea name="title" id="title" rows="1" cols="30">{{title}}</textarea>
         </div>
         <div class="edit_field">
           <label for="text" class="edit_title">Text</label><br>
-          <textarea name="text" id="text" rows="5" cols="80">{{ entry.text }}</textarea>
+          <textarea name="text" id="text" rows="5" cols="80">{{text}}</textarea>
         </div>
         <div class="control_row">
           <input type="submit" value="Share" id="edit_button">
