@@ -129,38 +129,19 @@ def get_entry(step, title):
 
 @step('I click the edit button')
 def edit_click(step):
-    world.app.get('/detail/1')
-    action = world.response.click("Edit")
-    assert 'id="share_button"' in action.body
+    response = world.app.get('/detail/1')
+    print response.body
+    response.click(linkid="new_edit_button")
+    assert 'class="share_button"' in response.body
 
 
-@step('I move to the edit page')
+@step('I am presented with an edit feature')
 def edit_page(step):
-    response = world.app.get('/edit/1')
-    assert 'id="share_button"' in response.body
-
-
-@step('a post that I have edited')
-def edited_post(step):
-    response = world.app.get('/edit/1')
-    assert 'id="share_button"' in response.body
-
-
-@step('I click the share button')
-def button_exists(step):
-    response = world.app.get('/edit/1')
-    assert 'id="share_button"' in response.body
-
-
-@step('I move to that posts detail page')
-def click_share(step):
-    response = world.app.get('/edit/1')
+    response = world.app.get('/detail/1')
     edit_form = response.form
     sub = edit_form.submit
-    select = sub("share_button", index=5)
-    assert select.status_code == 302
-    redirect = select.follow()
-    assert 'class="edit_button"' in redirect.body
+    sub("share_button")
+    assert 'class="share_button"' in response.body
 
 
 @step("a posts detail page with markdown written in it")
