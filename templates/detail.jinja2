@@ -9,7 +9,7 @@
         <div class="post">
            <p class="dateline">{{ entry.created.strftime('%b. %d, %Y') }}</p>
             <div class="entry_body" id ="test">
-             {{ entry.text|markdown|safe }}
+             {{ entry.render_markdown()|safe }}
             </div>
         </div>
       </article>
