@@ -101,7 +101,7 @@ class Entry(Base):
         return DBSession.query(cls).order_by(cls.created.desc()).first()
 
     def json_detail(self):
-        '''Displays a JSON object for detaile view'''
+        '''Displays a JSON object for detailed view'''
         return {'title': self.title,
                 'text': self.render_markdown(),
                 'created': self.created.strftime('%b %d, %Y'),
