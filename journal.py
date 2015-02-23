@@ -101,22 +101,26 @@ class Entry(Base):
         return DBSession.query(cls).order_by(cls.created.desc()).first()
 
     def json_detail(self):
+        '''Displays a JSON object for detaile view'''
         return {'title': self.title,
                 'text': self.render_markdown(),
                 'created': self.created.strftime('%b %d, %Y'),
                 'id': self.id}
 
     def json_edit(self):
+        '''Does not show HTML during editing'''
         return {'title': self.title,
                 'text': self.text,
                 'created': self.created.strftime('%b %d, %Y'),
                 'id': self.id}
 
     def editing(self, request):
+        '''Allows for updating both the entry text, as well as the title'''
         self.title = request.params.get('title', None)
         self.text = request.params.get('text', None)
 
     def render_markdown(self):
+        '''Used to put markdown on text within my template'''
         return markdown.markdown(
             self.text, extensions=['codehilite', 'fenced_code'])
 
@@ -203,7 +207,7 @@ def detail_entry(request):
 
 
 @view_config(route_name='edit', renderer='json')
-def editview_entry(request):
+def edit_entry(request):
     """gets posts by id and allows for editing"""
     if request.authenticated_userid:
         entry = Entry.by_id(request.params.get('id', None))
