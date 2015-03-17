@@ -13,10 +13,7 @@ a {
 
 /* Background won't repeat */
 html {
-  background: linear-gradient(transparent 29%, MediumPurple);
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
+  background: url('wood_panel.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
@@ -71,6 +68,8 @@ h2 {
 
 h3 {
     text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 3px rgba(0,0,0,.8);
 }
 
 /*******************
@@ -127,7 +126,7 @@ COLORS
 
 
 .entry {
-    color: #000;
+    color: #fff;
     text-align: center;
     margin-bottom: 75px
 }
@@ -136,7 +135,7 @@ COLORS
 .dateline {
     padding: 5px;
     font-size: 1em;
-    color: #111
+    color: #fff
 }
 
 
@@ -147,14 +146,15 @@ body {
 
 #content h2{
     text-align: center;
-    color: #000;
+    color: #fff;
     margin-bottom: 20px;
 }
 
 
 /* gray header */
 header {
-    background: linear-gradient(to bottom, #aaa -10%, transparent);
+    background-color:rgba(200, 200, 200, 0.5);
+    margin-bottom: -10px;
     border-color: #666;
 }
 
@@ -182,7 +182,10 @@ nav a.selected, nav a:hover {
     margin: auto;
     width: 60%;
     text-align: center;
-    background-color: #eee;
+    background: url('panel.jpg');
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     padding-bottom: 15px;
     box-shadow: 6px 6px 10px rgba(0,0,0,.5);
     border-radius: 10px;
@@ -208,6 +211,7 @@ nav a.selected, nav a:hover {
 .form_field {
     margin: auto;
     text-align: center;
+    color: #fff;
 }
 
 .edit_field {
@@ -230,16 +234,20 @@ input {
 }
 
 #gallery {
-    margin: 25px 0
+    font-size: 1.5em;
+    margin: 25px 0;
+    text-shadow: 2px 2px 3px rgba(0,0,0,.8);
 }
 
 #title {
     box-shadow: 1px 1px 10px rgba(0,0,0,.4);
+    border-radius: 5px;
 }
 
 #text {
     box-shadow: 0px 0px 20px rgba(0,0,0,.4);
-    padding-bottom: 10px
+    padding-bottom: 10px;
+    border-radius: 5px;
 }
 
 #login {
@@ -264,7 +272,7 @@ input {
 }
 
 #detail_post h1{
-    color: #000;
+    color: #fff;
     margin-bottom: -10px;
 }
 
@@ -317,4 +325,9 @@ code {
     padding-left: 40px;
     margin-top: -50px;
     margin-bottom: 10px;
+}
+
+.entry_body p {
+    color: #fff;
+    text-shadow: 2px 2px 3px rgba(0,0,0,1);
 }
