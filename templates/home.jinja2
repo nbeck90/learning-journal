@@ -1,0 +1,29 @@
+{% extends "base.jinja2" %}
+{% block body %}
+<div id='horizontal_holder'>
+    <div id='profile_photo'>
+        <img src="../static/nick_close.jpg" id='profile_pic'>
+    </div>
+    <div id='info'>
+        <h2>
+        Full-Stack Python Web Developer</br>
+        Microbiologist</br>
+        Baker</br><hr>
+        I have a passion for creating. Whether I'm writing code for my next project or
+        baking something I have never attempted before, I love trying new things and learning
+        from what I have already done. Below is a list of projects I have been working on
+        over the last several months.
+        </h2>
+    </div>
+</div>
+<div id ='projects'>
+    <div id='my_projects'>
+        </br></br>
+        <h2>
+        <a href='http://www.elleffgee.com' target="_blank">Game Chat - A Python based chat room app inspired by how matchmaking was done in the early days of gaming.</a></br>
+        <a href="{{ request.route_url('list') }}">Learning Journal - A learning journal that goes over each day of the Code Fellows Python Development Accelerator.</a></br>
+        Douser Bot (under construction)- Web scraping with the goal of finding offensive posts on Reddit/Twitter and shaming them via Tweeting.</br>
+        </h2>
+    </div>
+</div>
+{% endblock %}

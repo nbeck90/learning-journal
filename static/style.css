@@ -342,3 +342,36 @@ code {
     font-size: 1.25em;
 /*    text-shadow: 1px 1px 1px rgba(255,255,255,1);*/
 }
+
+#profile_pic {
+    max-height: 300px;
+    max-width: 200px;
+    float: left;
+    width: 45%;
+    border-radius: 10px;
+}
+
+#info {
+    float: right;
+    width: 55%;
+    text-align: left;
+    text-shadow: 1px 1px 1px rgba(0,0,0,1);
+}
+
+#horizontal_holder {
+    width: 50%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    height: 300px;
+}
+
+#projects {
+    width: 100%;
+    float: center;
+}
+
+#my_projects {
+    width: 90%;
+    margin: auto;
+}

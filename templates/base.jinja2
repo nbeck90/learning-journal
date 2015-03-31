@@ -6,7 +6,7 @@
     <meta name="HandheldFriendly" content="true" />
     <meta charset="utf-8">
     <link href='http://fonts.googleapis.com/css?family=Roboto:900,400italic,100,300,700,400' rel='stylesheet' type='text/css'>
-    <title>Python Learning Journal</title>
+    <title>Nick Becker: Blog Edition</title>
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
@@ -20,11 +20,11 @@
     <header>
       <a href="/" id="logo">
         <h1>Nick Becker</h1>
-        <h2>Python Learning Journal</h2>
       </a>
       <aside id="user-controls">
       <ul>
       <li><a href="/" class="selected">Home</a></li>
+      <li><a href="{{ request.route_url('list') }}">Learning Journal</a></li>
       {% if not request.authenticated_userid %}
       <li><a href="{{ request.route_url('login') }}">Log in</a></li>
       {% else %}

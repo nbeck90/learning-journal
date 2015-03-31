@@ -168,6 +168,7 @@ def main():
     config.add_route('logout', '/logout')
     config.add_route('detail', '/detail/{id}')
     config.add_route('edit', '/edit')
+    config.add_route('list', '/journal')
     config.scan()
     app = config.make_wsgi_app()
     return app
@@ -185,7 +186,7 @@ def markd(input):
 #     request.db.cursor().execute(INSERT_ENTRY, [title, text, created])
 
 
-@view_config(route_name='home', renderer='templates/list.jinja2')
+@view_config(route_name='list', renderer='templates/list.jinja2')
 def read_entries(request):
     """return a list of all entries as dicts"""
     entries = Entry.all()
@@ -197,6 +198,12 @@ def detail_entry(request):
     """return a single entry by its id"""
     entry = Entry.by_id(request.matchdict['id'])
     return {'entry': entry}
+
+
+@view_config(route_name='home', renderer='templates/home.jinja2')
+def home_view(request):
+    entries = Entry.all()
+    return {'entries': entries}
 
 
 # def update_entry(request):
