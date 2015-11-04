@@ -1,29 +1,142 @@
 {% extends "base.jinja2" %}
 {% block body %}
-<div id='horizontal_holder'>
-    <div id='profile_photo'>
-        <img src="../static/nick_close.jpg" id='profile_pic'>
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">NICK BECKER</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="{{ request.route_url('home') }}" class="selected">Home</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#about">About</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#projects">Projects</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#contact">Contact</a>
+                </li>
+                {% if not request.authenticated_userid %}
+                <li>
+                    <a href="{{ request.route_url('login') }}">Log in</a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{{ request.route_url('logout') }}">Log out</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
     </div>
-    <div id='info'>
-        <h2>
-        Full-Stack Python Web Developer</br>
-        Microbiologist</br>
-        Baker</br><hr>
-        I have a passion for creating. Whether I'm writing code for my next project or
-        baking something I have never attempted before, I love trying new things and learning
-        from what I have already done. Below is a list of projects I have been working on
-        over the last several months.
-        </h2>
+    <!-- /.container-fluid -->
+</nav>
+<header>
+    <div class="header-content">
+        <div class="header-content-inner">
+            <h2>Nick Becker</h2>
+            <h2>Full-Stack Developer</h2>
+            <hr>
+            <h3>Clean.</h3>
+            <h3>Understandable.</h3>
+            <h3>Tested.</h3>
+            <hr>
+            <h4>How code should be</h4>
+        </div>
     </div>
-</div>
-<div id ='projects'>
-    <div id='my_projects'>
-        </br></br>
-        <h2>
-        <a href='http://www.elleffgee.com' target="_blank">Game Chat - A Python based chat room app inspired by how matchmaking was done in the early days of gaming.</a></br>
-        <a href="{{ request.route_url('list') }}">Learning Journal - A learning journal that goes over each day of the Code Fellows Python Development Accelerator.</a></br>
-        <a href='http://www.douserbot.com' target="_blank">Douser Bot - Web scraping with the goal of finding offensive posts on Reddit/Twitter and shaming them via Tweeting.</a></br>
-        </h2>
+</header>
+
+<section class="bg-primary" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading" style="color: #555">Programmer. Biologist. Baker.</h2>
+                <hr>
+                <p class="text-faded">I'm a UW graduate who transitioned from Biology to Software Engineering. Having worked as a Baker, Biologist, and now programmer, I have a unique perspective that I bring to all of my projects</p>
+                <a href="#" class="btn btn-default btn-xl">My Resume</a>
+            </div>
+        </div>
     </div>
-</div>
+</section>
+
+<section class='bg-primary' id="projects">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading" style="color: #555">Projects</h2>
+                <hr class="primary">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <a href="https://github.com/whiteknightinc/white-knight" target="new">
+                    <i class="fa fa-4x fa-fire-extinguisher wow bounceIn glyph-primary" data-wow-delay=".1s"></i>
+                    <h3>Douser</h3>
+                    </a>
+                    <p class="text-muted">A basic scraper built up to capture toxic reddit posts and tweets</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <a href="https://github.com/nbeck90/game-chat" target="new">
+                    <i class="fa fa-4x fa-comment-o wow bounceIn glyph-primary"></i>
+                    <h3>Game Chat</h3>
+                    </a>
+                    <p class="text-muted">Chat room created in Python and built on Django</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <a href="{{ request.route_url('list') }}">
+                    <i class="fa fa-4x fa-file-text-o wow bounceIn glyph-primary" data-wow-delay=".2s"></i>
+                    <h3>Learning Journal</h3>
+                    </a>
+                    <p class="text-muted">Python based journal built in the first weeks at Code Fellows</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 text-center">
+                <div class="service-box">
+                    <a href="https://github.com/nbeck90/city-swap" target="new">
+                    <i class="fa fa-4x fa-building wow bounceIn glyph-primary" data-wow-delay=".3s"></i>
+                    <h3>City Swap</h3>
+                    </a>
+                    <p class="text-muted">Site built for inter-city trading. Solo project.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="contact" class="bg-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">CONTACT</h2>
+                <hr class="primary">
+            </div>
+            <div class="col-lg-4 col-lg-offset-2 text-center">
+                <i class="fa fa-phone fa-3x wow bounceIn"></i>
+                <p>(425) 761-1113</p>
+            </div>
+            <div class="col-lg-4 text-center">
+                <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                <p><a href="mailto:your-email@your-domain.com">beckercommanick@gmail.com</a></p>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}
