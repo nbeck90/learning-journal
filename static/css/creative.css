@@ -63,6 +63,17 @@ p {
 
 .text-faded {
     color: rgba(100,100,100,.7);
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+}
+
+.header-text-light {
+    color: #ddd;
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+}
+
+.body-text-light {
+    color: #aaa;
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
 }
 
 section {

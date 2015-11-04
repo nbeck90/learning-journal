@@ -10,7 +10,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand page-scroll" href="#page-top">NICK BECKER</a>
+            <a class="navbar-brand page-scroll" href="{{ request.route_url('home') }}">NICK BECKER</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -37,18 +37,19 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
-<section class="bg-dark">
+<section class="bg-dark" style="margin-bottom: -50px">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 text-center">
                 <h2 class="section-heading" style="color: #ddd">JOURNAL</h2>
-                <hr class="light">
-                <p class="text-faded" style="color: #aaa">A learning journal reflecting on the Python course taught by Code Fellows. Built from scratch using the Pyramid framework. With functionality to write and edit by way of AJAX as well as Tweet individual posts.</p>
+                <hr>
+                <p class="header-text-light">A learning journal reflecting on the Python course taught by Code Fellows. Built from scratch using the Pyramid framework. With functionality to write and edit by way of AJAX as well as Tweet individual posts.</p>
             </div>
         </div>
     </div>
 </section>
   <h2 id="gallery">Entries</h2>
+  <hr>
   <br>
 {% if request.authenticated_userid %}
 <div id="new_post" style="text-align: center">
@@ -87,10 +88,6 @@
             </div>
           </a>
     </article>
-    <div style="text-align:center" class="twitter">
-    <a href="https://twitter.com/share" class="twitter-share-button" data-text="New Blog Post: {{entry.title}}" data-via="BeckerCommaNick" data-size="large" data-dnt="true" style="color: #eee"></a>
-    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-    </div>
     </h4>
   {% else %}
   <div class="entry">

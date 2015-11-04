@@ -28,15 +28,12 @@
                 <li>
                     <a class="page-scroll" href="#contact">Contact</a>
                 </li>
-                {% if not request.authenticated_userid %}
                 <li>
-                    <a href="{{ request.route_url('login') }}">Log in</a>
+                    <a href="/static/imgs/resume.pdf" target="new" class="page-scroll">Resume</a>
                 </li>
-                {% else %}
                 <li>
-                    <a href="{{ request.route_url('logout') }}">Log out</a>
+                    <a href="{{ request.route_url('list') }}" class="page-scroll">Journal</a>
                 </li>
-                {% endif %}
             </ul>
         </div>
         <!-- /.navbar-collapse -->
@@ -49,8 +46,8 @@
             <h2>Nick Becker</h2>
             <h2>Full-Stack Developer</h2>
             <hr>
-            <h3>Clean.</h3>
             <h3>Understandable.</h3>
+            <h3>Clean.</h3>
             <h3>Tested.</h3>
             <hr>
             <h4>How code should be</h4>
@@ -58,20 +55,20 @@
     </div>
 </header>
 
-<section class="bg-primary" id="about">
+<section class="bg-dark" id="about">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 text-center">
-                <h2 class="section-heading" style="color: #555">Programmer. Biologist. Baker.</h2>
+                <h2 class="section-heading" class='header-text-light'>Programmer. Biologist. Baker.</h2>
                 <hr>
-                <p class="text-faded">I'm a UW graduate who transitioned from Biology to Software Engineering. Having worked as a Baker, Biologist, and now programmer, I have a unique perspective that I bring to all of my projects</p>
-                <a href="#" class="btn btn-default btn-xl">My Resume</a>
+                <p class="body-text-light">A UW graduate who transitioned from Biology to Software Engineering. Having worked as a Baker, Biologist, and now programmer, I bring a unique perspective to all of my projects.</p>
+                <a href="/static/imgs/resume.pdf" target="new" class="btn btn-default btn-xl">My Resume</a>
             </div>
         </div>
     </div>
 </section>
 
-<section class='bg-primary' id="projects">
+<section class='bg-primary' id="projects" style="margin-top: -20px">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -88,7 +85,7 @@
                     <i class="fa fa-4x fa-fire-extinguisher wow bounceIn glyph-primary" data-wow-delay=".1s"></i>
                     <h3>Douser</h3>
                     </a>
-                    <p class="text-muted">A basic scraper built up to capture toxic reddit posts and tweets</p>
+                    <p class="text-faded">A basic scraper built up to capture toxic Reddit posts and tweets</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
@@ -97,7 +94,7 @@
                     <i class="fa fa-4x fa-comment-o wow bounceIn glyph-primary"></i>
                     <h3>Game Chat</h3>
                     </a>
-                    <p class="text-muted">Chat room created in Python and built on Django</p>
+                    <p class="text-faded">Chat room created in Python and built on Django</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
@@ -106,7 +103,7 @@
                     <i class="fa fa-4x fa-file-text-o wow bounceIn glyph-primary" data-wow-delay=".2s"></i>
                     <h3>Learning Journal</h3>
                     </a>
-                    <p class="text-muted">Python based journal built in the first weeks at Code Fellows</p>
+                    <p class="text-faded">Python based journal built in the first weeks at Code Fellows</p>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 text-center">
@@ -115,7 +112,7 @@
                     <i class="fa fa-4x fa-building wow bounceIn glyph-primary" data-wow-delay=".3s"></i>
                     <h3>City Swap</h3>
                     </a>
-                    <p class="text-muted">Site built for inter-city trading. Solo project.</p>
+                    <p class="text-faded">Site built for inter-city trading. Solo project.</p>
                 </div>
             </div>
         </div>
@@ -124,15 +121,9 @@
 <section id="contact" class="bg-dark">
     <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 text-center">
+            <div class="col-lg-12 text-center">
                 <h2 class="section-heading">CONTACT</h2>
                 <hr class="primary">
-            </div>
-            <div class="col-lg-4 col-lg-offset-2 text-center">
-                <i class="fa fa-phone fa-3x wow bounceIn"></i>
-                <p>(425) 761-1113</p>
-            </div>
-            <div class="col-lg-4 text-center">
                 <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
                 <p><a href="mailto:your-email@your-domain.com">beckercommanick@gmail.com</a></p>
             </div>

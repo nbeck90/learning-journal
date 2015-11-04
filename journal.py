@@ -275,7 +275,7 @@ def login(request):
 
         if authenticated:
             headers = remember(request, username)
-            return HTTPFound(request.route_url('home'), headers=headers)
+            return HTTPFound(request.route_url('list'), headers=headers)
 
     return {'error': error, 'username': username}
 
@@ -283,7 +283,7 @@ def login(request):
 @view_config(route_name='logout')
 def logout(request):
     headers = forget(request)
-    return HTTPFound(request.route_url('home'), headers=headers)
+    return HTTPFound(request.route_url('list'), headers=headers)
 
 
 if __name__ == '__main__':
