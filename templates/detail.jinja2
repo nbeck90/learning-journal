@@ -1,7 +1,48 @@
 {% extends "base.jinja2" %}
 {% block body %}
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">NICK BECKER</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="{{ request.route_url('home') }}">Home</a>
+                </li>
+                <li>
+                    <a href="{{ request.route_url('list') }}" class="selected">Learning Journal</a>
+                </li>
+                {% if not request.authenticated_userid %}
+                <li>
+                    <a href="{{ request.route_url('login') }}">Log in</a>
+                </li>
+                {% else %}
+                <li>
+                    <a href="{{ request.route_url('logout') }}">Log out</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<section class="bg-dark">
+</section>
+</br>
   <h2 id="gallery">Detailed Post View</h2>
   <div id="detail_post">
+      <h4>
       <article class="entry" id="title={{entry.id}}">
        <h3 id="post_title">{{ entry.title }}</h3>
         <div class="post">
@@ -11,14 +52,15 @@
             </div>
         </div>
       </article>
+      </h4>
       <div style="text-align:center" class="twitter">
       <a href="https://twitter.com/share" class="twitter-share-button" data-text="New Blog Post: {{entry.title}}" data-via="BeckerCommaNick" data-size="large" data-dnt="true">Tweet</a>
       <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
       </div>
   </div>
-  <div id="editing">
+  <div id="editing" class="center-white">
   </div>
-  <div id="edited">
+  <div id="edited" class="center-white">
   </div>
   {% if request.authenticated_userid %}
   <div style="text-align:center;">
