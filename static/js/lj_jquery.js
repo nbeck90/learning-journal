@@ -12,6 +12,20 @@ function get_edit() {
 
 }
 
+function get_remove() {
+  var id = $('.entry').attr('id').split("=")[1];
+  console.log(id)
+  $.ajax({
+    url: '/remove',
+    type: 'GET',
+    dataType: 'json',
+    data: {'id': id},
+    success: get_remove_success,
+  });
+
+}
+
+
 function get_edit_success(entry){
   var template = '<aside><form action="{{ request.route_url("edit", id=entry.id) }}" method="POST" class="edit_entry">'+
                  '<div class="edit_field"><label for="title" class="edit_title">Title</label><br>'+
@@ -31,6 +45,23 @@ function get_edit_success(entry){
   });
 }
 
+function get_remove_success(entry){
+  var template = '<aside><form action="{{ request.route_url("remove", id=entry.id) }}" method="DELETE" class="delete_entry">'+
+                 '<div class="control_row"><input type="submit" value="Delete" name="Delete"/></div></form></aside>';
+
+  var html = Mustache.to_html(template, entry);
+  $('.entry').hide()
+  $('.twitter').remove()
+  $('#editing').prepend(html);
+  $('.detail_post').prepend(html);
+  $(".edit_button").hide();
+  $(".remove_button").hide();
+  $('.delete_entry').on('submit', function(event){
+      event.preventDefault();
+      make_delete();
+  });
+}
+
 function make_edit() {
     var title = $('#title').val();
     var text = $('#text').val();
@@ -42,6 +73,19 @@ function make_edit() {
       dataType: 'json',
       data: {'title': title, 'text': text, 'id': id},
       success: make_edit_success,
+    });
+
+}
+
+function make_delete() {
+    var split_path = window.location.pathname.split("/");
+    var id = split_path[split_path.length-1];
+    console.log(id)
+    $.ajax({
+      url: '/remove',
+      type: 'DELETE',
+      dataType: 'json',
+      data: {'id': id},
     });
 
 }
@@ -107,6 +151,10 @@ $('.edit_button').click(function(event){
     get_edit();
   });
 
+$('.remove_button').click(function(event){
+    event.preventDefault();
+    get_remove();
+  });
 
 $('.add_entry').on('submit', function(event){
     event.preventDefault();
