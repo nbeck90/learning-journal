@@ -129,11 +129,10 @@ def main():
     config.include('pyramid_tm')
     config.include('pyramid_jinja2')
     config.add_static_view('static', os.path.join(here, 'static'))
-    config.add_route('home', '/')
     config.add_route('add', '/add')
     config.add_route('detail', '/detail/{id}')
     config.add_route('edit', '/edit')
-    config.add_route('list', '/all')
+    config.add_route('list', '/')
     config.scan()
     app = config.make_wsgi_app()
     return app
