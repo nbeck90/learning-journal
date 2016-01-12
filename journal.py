@@ -8,7 +8,8 @@ import logging
 import datetime
 from pyramid.config import Configurator
 from pyramid.session import SignedCookieSessionFactory
-from pyramid.view import view_config
+from pyramid.view import view_config, view_defaults
+from pyramid.response import Response
 from waitress import serve
 # from pyramid.events import NewRequest, subscriber
 from pyramid.httpexceptions import HTTPFound, \
@@ -169,6 +170,7 @@ def main():
     config.add_route('detail', '/detail/{id}')
     config.add_route('edit', '/edit')
     config.add_route('list', '/journal')
+    config.add_route('dupes', '/dupes')
     config.scan()
     app = config.make_wsgi_app()
     return app
@@ -204,6 +206,11 @@ def detail_entry(request):
 def home_view(request):
     entries = Entry.all()
     return {'entries': entries}
+
+
+@view_config(route_name='dupes', renderer='templates/dupes.jinja2')
+def dupes(request):
+    return {}
 
 
 # def update_entry(request):
