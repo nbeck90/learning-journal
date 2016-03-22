@@ -67,6 +67,24 @@ function make_edit_success(entry){
   twttr.widgets.load();
 }
 
+function remove_post() {
+    var split_path = window.location.pathname.split("/");
+    console.log(split_path)
+    var id = split_path[split_path.length-1];
+    console.log(id)
+    $.ajax({
+      url: '/remove',
+      type: 'POST',
+      dataType: 'json',
+      data: {'id': id},
+    });
+
+}
+
+function relocate() {
+  window.location.replace("/journal");
+}
+
 function add_post() {
     var title = $('#title').val();
     var text = $('#text').val();
@@ -107,6 +125,10 @@ $('.edit_button').click(function(event){
     get_edit();
   });
 
+$('.remove_button').click(function(event){
+    event.preventDefault();
+    remove_post();
+  });
 
 $('.add_entry').on('submit', function(event){
     event.preventDefault();

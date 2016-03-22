@@ -67,6 +67,9 @@
   <a href="#" id="new_edit_button">
   <button class="edit_button">Edit</button>
   </a>
+  <a href="#" id="remove_button">
+  <button class="remove_button" onclick="location.href='{{ request.route_url("list") }}'">Remove</button>
+  </a>
   </div>
   {% endif %}
 {% endblock %}
