@@ -231,7 +231,6 @@ def dupes(request):
 @view_config(route_name='edit', renderer='json')
 def edit_entry(request):
     """gets posts by id and allows for editing"""
-    import pdb; pdb.set_trace()
     if request.authenticated_userid:
         entry = Entry.by_id(request.params.get('id', None))
         if request.method == 'GET':

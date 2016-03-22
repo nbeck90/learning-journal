@@ -126,7 +126,6 @@ $('.edit_button').click(function(event){
   });
 
 $('.remove_button').click(function(event){
-    event.preventDefault();
     remove_post();
   });
 
