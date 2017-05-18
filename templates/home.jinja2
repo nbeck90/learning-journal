@@ -1,0 +1,111 @@
+{% extends "base.jinja2" %}
+{% block body %}
+<nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">NICK BECKER</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="{{ request.route_url('home') }}" class="selected">Home</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#about">About</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#projects">Projects</a>
+                </li>
+                <li>
+                    <a class="page-scroll" href="#contact">Contact</a>
+                </li>
+                <li>
+                    <a href="/static/imgs/resume.pdf" target="new" class="page-scroll">Resume</a>
+                </li>
+                <li>
+                    <a href="{{ request.route_url('list') }}" class="page-scroll">Journal</a>
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+</nav>
+<header>
+    <div class="header-content">
+        <div class="header-content-inner">
+            <h2>Nick Becker</h2>
+            <h2>Software Developer</h2>
+            <hr>
+            <h4>Because code should make sense</h4>
+        </div>
+    </div>
+</header>
+
+<section class="bg-dark" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading" class='header-text-light'>Programmer. Biologist. Baker.</h2>
+                <hr>
+                <p class="body-text-light">A UW graduate who transitioned from Biology to Software Engineering. Having worked as a Baker, Biologist, and Software Engineer, I bring a unique perspective to all of my projects.</p>
+                <a href="/static/imgs/resume.pdf" target="new" class="btn btn-default btn-xl">My Resume</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class='bg-primary' id="projects" style="margin-top: -20px">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading" style="color: #555">Personal Projects</h2>
+                <hr class="primary">
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6 text-center">
+                <div class="service-box">
+                    <a href="https://github.com/whiteknightinc/white-knight" target="new">
+                    <i class="fa fa-4x fa-fire-extinguisher wow bounceIn glyph-primary" data-wow-delay=".1s"></i>
+                    <h3>Douser</h3>
+                    </a>
+                    <p class="text-faded">A basic scraper built up to capture toxic Reddit posts and tweets</p>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 text-center">
+                <div class="service-box">
+                    <a href="https://github.com/nbeck90/game-chat" target="new">
+                    <i class="fa fa-4x fa-comment-o wow bounceIn glyph-primary"></i>
+                    <h3>Game Chat</h3>
+                    </a>
+                    <p class="text-faded">Chat room created in Python and built on Django</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="contact" class="bg-dark">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2 class="section-heading">CONTACT</h2>
+                <hr class="primary">
+                <i class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></i>
+                <p><a href="mailto:your-email@your-domain.com">beckercommanick@gmail.com</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
